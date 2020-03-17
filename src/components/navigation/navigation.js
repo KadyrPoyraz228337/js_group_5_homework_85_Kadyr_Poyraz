@@ -1,19 +1,15 @@
 import React from 'react';
-import {Container, Nav, Navbar, NavbarBrand, NavItem, NavLink} from "reactstrap";
+import {Container, Navbar, NavbarBrand} from "reactstrap";
 import {NavLink as RouterNavLink} from 'react-router-dom'
+import ToolBar from "../UI/toolBar/toolBar";
 
 const Navigation = () => {
+
   return (
     <Navbar color="light" light expand="md">
       <Container>
         <NavbarBrand tag={RouterNavLink} to='/'>MusicApp</NavbarBrand>
-        <Nav className="ml-auto" navbar>
-          <NavItem>
-            <NavLink tag={RouterNavLink} to='/' exact>Artists</NavLink>
-          </NavItem>
-          <NavItem>
-          </NavItem>
-        </Nav>
+          <ToolBar/>
       </Container>
     </Navbar>
   );
