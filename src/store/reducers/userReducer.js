@@ -1,7 +1,7 @@
-import {FETCH_USER_ERROR, FETCH_USER_SUCCESS} from "../actions/userActions";
+import {FETCH_USER_ERROR, FETCH_USER_SUCCESS, LOGOUT_USER_SUCCESS} from "../actions/userActions";
 
 const INITIAL_STATE = {
-  user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
+  user: null,
   error: null
 };
 
@@ -16,6 +16,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         error: action.error.response.data.message
+      };
+    case LOGOUT_USER_SUCCESS:
+      return {
+        ...state,
+        user: null
       };
     default: return state;
   }

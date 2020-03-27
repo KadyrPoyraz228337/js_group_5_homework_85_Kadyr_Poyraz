@@ -14,6 +14,8 @@ import artistReducer from "./store/reducers/artistReducer";
 import albumReducer from "./store/reducers/albumReducer";
 import userReducer from "./store/reducers/userReducer";
 import trackHistoryReducer from "./store/reducers/trackHistoryReducer";
+import {loadFromLocalStorage, localStorageMiddleware} from "./store/localStorage";
+
 
 const history = createBrowserHistory();
 
@@ -28,12 +30,16 @@ const rootReducer = combineReducers({
 
 const middleware = [
   thunk,
+  localStorageMiddleware,
   routerMiddleware(history)
 ];
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const persistedState = loadFromLocalStorage();
 
 export const store = createStore(
   rootReducer,
+  persistedState,
   composeEnhancers(
     applyMiddleware(
       ...middleware

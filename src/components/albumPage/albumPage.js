@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAlbum} from "../../store/actions/albumActions";
+import {deleteTrack, fetchAlbum, publishTrack} from "../../store/actions/albumActions";
 import {Badge, Button, ListGroup, ListGroupItem, Modal, ModalBody, ModalHeader} from "reactstrap";
 import {useLocation, useParams} from "react-router";
 import {listenToTheTrack} from "../../store/actions/trackHistoryActions";
@@ -8,6 +8,7 @@ import YouTube from "react-youtube";
 
 const AlbumPage = () => {
   const state = useSelector(state => state.album);
+  const user = useSelector(state => state.users.user);
   const dispatch = useDispatch();
   const params = useParams();
   const [modal, setModal] = useState(false);
@@ -39,9 +40,11 @@ const AlbumPage = () => {
             return (
               <ListGroupItem className='d-flex align-items-center' key={track._id}>
                 <h5 className='m-0 mr-3 border rounded bg-light p-2'>{index+1}</h5>
-                <h3 className='m-0 mr-5'>{track.title}</h3>
+                <h3 className='m-0 mr-5'>{track.title} {!track.published && <b>{'(not published)'}</b>}</h3>
                 <p className='m-0 mr-1 text-dark'>duration:</p>
-                <Badge pill>{track.duration} minutes</Badge>
+                <Badge pill className='mr-2'>{track.duration} minutes</Badge>
+                {!track.published && user && user.role === 'admin' && <Button color='primary' onClick={() => dispatch(publishTrack(track._id))}>publish</Button>}
+                {track.published && user && user.role === 'admin' && <Button color='danger' onClick={() => dispatch(deleteTrack(track._id))}>delete</Button>}
                 <Button
                   className='ml-auto'
                   onClick={() => openModal(track)}

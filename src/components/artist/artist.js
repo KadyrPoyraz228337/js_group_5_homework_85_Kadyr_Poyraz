@@ -23,11 +23,13 @@ const Artist = () => {
             return (
               <Album
                 key={album._id}
+                id={album._id}
                 title={album.title}
                 path={`/albums/${album._id}?artist=${query.get('artist')}&album=${album.title}`}
                 cover={`http://localhost:8000/uploads/${album.coverImage}`}
                 date={album.dateOfRelease}
                 tracksTotal={album.totalTracks}
+                published={album.published}
               />
             )
           })}

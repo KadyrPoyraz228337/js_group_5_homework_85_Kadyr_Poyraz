@@ -12,7 +12,6 @@ const Login = () => {
   const [userInfo, setUser] = useState(initialState);
   const error = useSelector(state => state.users.error);
   const dispatch = useDispatch();
-
   const inputChangeHandler = e => setUser({...userInfo, [e.target.name]: e.target.value});
   const onSubmit = async e => {
     e.preventDefault();

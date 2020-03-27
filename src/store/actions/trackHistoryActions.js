@@ -22,3 +22,11 @@ export const fetchTracks = () => async (dispatch, getState) => {
     console.log(e);
   }
 };
+
+export const addTrack = track => async dispatch => {
+  try {
+    await axiosMusic.post('/tracks', track);
+  } catch (e) {
+    console.log(e);
+  }
+};
