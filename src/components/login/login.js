@@ -3,6 +3,7 @@ import FormField from "../UI/formField/formField";
 import {Alert, Button, Form} from "reactstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchLoginUser} from "../../store/actions/userActions";
+import FacebookLoginButton from "../FacebookLogin/FacebookLogin";
 
 const Login = () => {
   const initialState = {
@@ -42,6 +43,7 @@ const Login = () => {
         </Alert>}
         <Button>Registration</Button>
       </Form>
+      <FacebookLoginButton/>
     </div>
   );
 };

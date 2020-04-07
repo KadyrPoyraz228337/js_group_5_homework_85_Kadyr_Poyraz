@@ -29,7 +29,6 @@ export const localStorageMiddleware = store => next => action => {
   let result = next(action);
 
   if(actions.includes(action.type)) {
-    console.log(action.type);
     saveToLocalStorage({
       users: {
         user: store.getState().users.user

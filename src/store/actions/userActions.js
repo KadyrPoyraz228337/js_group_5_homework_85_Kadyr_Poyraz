@@ -38,3 +38,13 @@ export const fetchLoginUser = user => async dispatch => {
     dispatch(fetchUserError(error))
   }
 };
+
+export const facebookLogin = data => async dispatch => {
+  try {
+    const resp = await axiosMusic.post('/users/facebook', data);
+    dispatch(fetchUserSuccess(resp.data))
+    dispatch(push('/'))
+  } catch (e) {
+    console.log(e);
+  }
+};

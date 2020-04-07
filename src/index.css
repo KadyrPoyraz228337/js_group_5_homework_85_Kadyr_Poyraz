@@ -20,7 +20,6 @@ code {
   opacity: 1;
   transform: scale(1);
   transition: all 300ms;
-  /*animation: alert-active 700ms ease-in forwards;*/
 }
 .albums-exit {
   opacity: 1;
@@ -29,21 +28,16 @@ code {
   opacity: 0;
   transition: all 300ms;
   transform: scale(.8);
-  /*animation: alert-active 700ms ease-out alternate-reverse;*/
 }
 
-/*@keyframes alert-active {*/
-/*  0% {*/
-/*    opacity: 0;*/
-/*    transform: translateX(-100px);*/
-/*  }*/
-/*  30% {*/
-/*    opacity: .9;*/
-/*    transform: translateX(20px);*/
-/*  }*/
-/*  100% {*/
-/*    opacity: 1;*/
-/*    transform: translateX(0);*/
-/*  }*/
-/*}*/
+.fb-link {
+  cursor: pointer;
+  width: 130px;
+  text-align: center;
+  margin: 15px 0 0 0;
+}
+
+.fb-link:hover {
+  border-bottom: 1px solid #000;
+}
 
